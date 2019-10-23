@@ -1,20 +1,20 @@
-const map = new MapDem(ctx, 3, 3, 5, 5)
+const map = new MapDem(ctx, 20, 20, 10, 10)
 map.initMap()
-map.drawMap()
+
 
 const draw = () => {
 	ctx.clearRect(0, 0, width, height);
-	
+	map.drawMap()
 }
 const update = () => {
 
 }
-const animate = () => {
+const main = () => {
 	draw()
 	update()
-	requestAnimationFrame(animate)
+	requestAnimationFrame(main)
 }
 
-animate()
+main()
 
 // alert(map.getX)

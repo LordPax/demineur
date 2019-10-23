@@ -1,5 +1,5 @@
 class MapDem {
-	t_case = 20
+	t_case = 40
 	matrice = []
 	constructor(ctx, x, y, lx, ly) {
 		this.x = x
@@ -15,15 +15,13 @@ class MapDem {
 	initMap() {
 		this.matrice = superfor(this.lx, (i, r) => {
 			return superfor(this.ly, (j, r2) => {
-				return [...r2, new Case(ctx, i, j, this.t_case, 0)]
+				return [...r2, new Case(ctx, this.lx, this.ly, i, j, this.t_case, 0)]
 			}, 0, r)
 		}, 0, [])
 	}
 
 	drawMap() {
-		superfor(this.lx * this.ly, (i, r) => {
-			console.log(this.matrice[i].x, ', ', this.matrice[i].y)
-		})
+		superfor(this.lx * this.ly, (i, r) => this.matrice[i].drawCase())
 	}
 	
 	// update() {
