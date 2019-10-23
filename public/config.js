@@ -10,11 +10,6 @@ canvas.style.width = width + 'px'
 canvas.style.height = height + 'px'
 ctx.scale(ratio, ratio)
 
-// const For = (compt, f, acc = 0) => {
-// 	if (acc < compt) f(acc)
-// 	return acc < compt ? For(compt, f, acc + 1) : true
-// }
-
 const superfor = (compt, f, acc = 0, r = null) => {
 	const re = acc < compt ? f(acc, r) : r
 	return acc < compt ? superfor(compt, f, acc + 1, re) : re
