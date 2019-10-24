@@ -1,6 +1,6 @@
-const map = new MapDem(ctx, 20, 20, 10, 10)
+const map = new MapDem(ctx, mapx, mapy, ly, ly, t_case)
 map.initMap()
-
+map.eventCase(canvas)
 
 const draw = () => {
 	ctx.clearRect(0, 0, width, height);
