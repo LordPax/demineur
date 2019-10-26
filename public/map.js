@@ -12,9 +12,7 @@ class MapDem {
 	get getX() { return this.x }
 	get getY() { return this.y }
 
-	initMine() {
-		return 0 // A faire !!!
-	}
+	initMine() { return aleaMine(5) }
 
 	initMap() {
 		this.cases = superfor(this.lx, (i, r) => {
@@ -28,13 +26,35 @@ class MapDem {
 		this.cases.map(x => x.drawCase())
 	}
 
+	evaluerCase(elem) {
+		if (elem.getMine !== 1)
+			elem.setNbMine(this.chercheMine(elem))
+		else
+			alert('mine')
+	}
+
+	chercheMine(elem, i = 1, j = 0, nbm = 0, acc = 0) {
+		// const x = elem.getNbX + i, y = elem.getNbY + j
+		// const nbMine = this.getCase(x, y).getMine === 1 ? nbm + 1 : nbm
+		// const ivar, jvar
+		// return acc < 7 ? chercheMine(elem, ivar, jvar, nbMine, acc + 1) : nbMine
+		return 0 // a finir
+	}
+
+	getCase(x, y) {
+		const id = y * 10 + x
+		return this.cases[id]
+	}
+
 	eventCase(canvas) {
 		canvas.addEventListener('click', e => {
 			const x = e.clientX, y = e.clientY
 			this.cases.map(elem => {
 				if (x > elem.getX && x < elem.getX + elem.getT &&
 					y > elem.getY && y < elem.getY + elem.getT) {
-					alert(elem.getNbX + ' ' + elem.getNbY)
+					// alert(elem.getNbX + ' ' + elem.getNbY)
+					this.evaluerCase(elem)
+					elem.toggleCase()
 				}
 			})
 		})

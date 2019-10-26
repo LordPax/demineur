@@ -20,6 +20,19 @@ const superfor = (compt, f, acc = 0, r = null) => {
 	return acc < compt ? superfor(compt, f, acc + 1, re) : re
 }
 
+const rand = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+
+const str_rand = (taille, f, char = '') => {
+	const char_rand = f(0, 1) === 1 ? f(65, 90) : f(97, 122)
+	const tmp = String.fromCharCode(char_rand)
+
+	return taille > 0 ? str_rand(taille - 1, f, char + tmp) : char
+}
+
+const aleaMine = (n) => rand(0, n) === 0 ? 1 : 0
+
+// console.log(str_rand(5, rand))
+
 // superfor(5, (i, r) => {
 // 	console.log('i :', i, 'r :', r)
 // 	return i + r
