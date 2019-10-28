@@ -3,16 +3,16 @@ map.initMap()
 map.eventCase(canvas)
 
 const draw = () => {
-	ctx.clearRect(0, 0, width, height);
-	map.drawMap()
+    ctx.clearRect(0, 0, width, height);
+    map.drawMap()
 }
 const update = () => {
 
 }
 const main = () => {
-	draw()
-	update()
-	requestAnimationFrame(main)
+    draw()
+    update()
+    requestAnimationFrame(main)
 }
 
 main()
