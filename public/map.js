@@ -17,7 +17,7 @@ class MapDem {
     initMap() {
         this.cases = superfor(this.lx, (i, r) => {
             return superfor(this.ly, (j, r2) => {
-                return [...r2, new Case(ctx, this.x, this.y, i, j, this.t_case, this.initMine())]
+                return [...r2, new Case(ctx, this.x, this.y, j, i, this.t_case, this.initMine())]
             }, 0, r)
         }, 0, [])
     }
@@ -31,17 +31,17 @@ class MapDem {
             alert('mine')
     }
 
-    chercheMine(elem, i = 1, j = 0, nbm = 0, acc = 0) {
-        // const x = elem.getNbX + i, y = elem.getNbY + j
-        // const nbMine = this.getCase(x, y).getMine === 1 ? nbm + 1 : nbm
-        // const ivar = 0, jvar = 0
-        // return acc < 8 ? chercheMine(elem, ivar, jvar, nbMine, acc + 1) : nbMine
-        return 0 // a finir
+    getCase(x, y) {
+        return this.cases[y * this.lx + x]
     }
 
-    getCase(x, y) {
-        const id = y * 10 + x
-        return this.cases[id]
+    chercheMine(elem, nbm = 0, acc = 0) {
+        const x = elem.getNbX + vCase[acc].x, y = elem.getNbY + vCase[acc].y
+        const cond = x >= 0 && x < this.lx && y >= 0 && y < this.ly
+        const altX = cond ? x : elem.getNbX, altY = cond ? y : elem.getNbY
+        const nbMine = this.getCase(altX, altY).getMine === 1 ? nbm + 1 : nbm
+
+        return acc < 7 ? this.chercheMine(elem, nbMine, acc + 1) : nbMine
     }
 
     eventCase(canvas) {

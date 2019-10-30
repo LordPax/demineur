@@ -31,6 +31,17 @@ const str_rand = (taille, f, char = '') => {
 
 const aleaMine = n => rand(0, n) === 0 ? 1 : 0
 
+const vCase = [
+    {x : 1, y : 0},
+    {x : 1, y : 1},
+    {x : 0, y : 1},
+    {x : -1, y : 1},
+    {x : -1, y : 0},
+    {x : -1, y : -1},
+    {x : 0, y : -1},
+    {x : 1, y : -1}
+]
+
 // console.log(str_rand(5, rand))
 
 // superfor(5, (i, r) => {

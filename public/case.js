@@ -2,6 +2,7 @@ class Case {
     nbMine = 0
     police = 12
     toggle = 0
+    flag = 0
     constructor(ctx, mapx, mapy, nbx, nby, t, mine) {
         this.ctx = ctx
         this.nbx = nbx
@@ -25,7 +26,7 @@ class Case {
         this.drawRect('#000000', '#EFEFEF')
         if (this.toggle === 1) {
             this.drawRect('#000000', '#FFFFFF')
-            this.drawText(this.getMine === 1 ? this.getMine : this.getNbMine)
+            this.drawText(this.getMine === 1 ? "M" : this.getNbMine)
         }
     }
 
