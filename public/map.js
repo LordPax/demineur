@@ -31,32 +31,15 @@ class MapDem {
             alert('mine')
     }
 
-    getCase(x, y) {
-        return this.cases[y * this.lx + x]
-    }
+    getCase(x, y) { return this.cases[y * this.lx + x] }
 
     chercheMine(elem, nbm = 0, acc = 0) {
         const x = elem.getNbX + vCase[acc].x, y = elem.getNbY + vCase[acc].y
         const cond = x >= 0 && x < this.lx && y >= 0 && y < this.ly
+
         const altX = cond ? x : elem.getNbX, altY = cond ? y : elem.getNbY
         const nbMine = this.getCase(altX, altY).getMine === 1 ? nbm + 1 : nbm
 
         return acc < 7 ? this.chercheMine(elem, nbMine, acc + 1) : nbMine
     }
-
-    eventCase(canvas) {
-        canvas.addEventListener('click', e => {
-            const x = e.clientX, y = e.clientY
-            this.cases.map(elem => {
-                if (x > elem.getX && x < elem.getX + elem.getT &&
-                    y > elem.getY && y < elem.getY + elem.getT) {
-                    this.evaluerCase(elem)
-                    elem.toggleCase()
-                }
-            })
-        })
-    }
-
-    // update() {
-    // }
 }
