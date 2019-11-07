@@ -42,6 +42,8 @@ const vCase = [
     {x : 1, y : -1}
 ]
 
+const print = console.log
+
 // console.log(str_rand(5, rand))
 
 // superfor(5, (i, r) => {

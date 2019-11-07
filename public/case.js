@@ -20,6 +20,7 @@ class Case {
     get getT() { return this.t }
     get getMine() { return this.mine }
     get getNbMine() { return this.nbMine}
+    get getFlag() { return this.flag }
     setNbMine(nb) { this.nbMine = nb}
 
     drawCase() {
@@ -28,9 +29,12 @@ class Case {
             this.drawRect('#000000', '#FFFFFF')
             this.drawText(this.getMine === 1 ? "M" : this.getNbMine)
         }
+        else if (this.flag === 1)
+            this.drawText('F')
     }
 
     toggleCase() { if (this.toggle === 0) this.toggle = 1 }
+    toggleFlag() { if (this.flag === 0) { this.flag = 1 } else { this.flag = 0 } }
 
     drawRect(border, bg) {
         this.ctx.strokeStyle = border

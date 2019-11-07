@@ -8,17 +8,28 @@ class partie {
 
     setMap(map) { this.map = map }
 
-    eventCase(canvas) {
+    event(canvas) {
         canvas.addEventListener('click', e => {
-            const x = e.clientX, y = e.clientY
-            this.map.cases.map(elem => {
-                if (x > elem.getX && x < elem.getX + elem.getT &&
-                    y > elem.getY && y < elem.getY + elem.getT) {
-                    this.map.evaluerCase(elem)
-                    elem.toggleCase()
-                }
-            })
+            this.map.cases.map(elem => this.eventCase(canvas, e, elem))
         })
+    }
+
+    eventKey(canvas) {
+
+    }
+
+    eventCase(canvas, e, elem) {
+        const x = e.clientX, y = e.clientY
+       
+        if (x > elem.getX && x < elem.getX + elem.getT &&
+            y > elem.getY && y < elem.getY + elem.getT) {
+            if (e.ctrlKey === false && elem.getFlag === 0) {
+                this.map.evaluerCase(elem)
+                elem.toggleCase()
+            }
+            else if (e.ctrlKey === true)
+                elem.toggleFlag()
+        }   
     }
 
     gagner() {} // a faire !!!
