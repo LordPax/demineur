@@ -1,8 +1,3 @@
-// import { MapDem } from './map'
-
-// const conf:any = require('./config')
-
-// export class Partie {
 class Partie {
     private pts:number = 0
     private map:MapDem = null

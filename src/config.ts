@@ -21,14 +21,6 @@ const superfor = (compt:number, f:any, acc:number = 0, r:any = null):any => {
 }
 
 const rand = (min:number, max:number):number => Math.floor(Math.random() * (max - min + 1) + min)
-
-const str_rand = (taille:number, f:any, char:string = ''):string => {
-    const char_rand:number = f(0, 1) === 1 ? f(65, 90) : f(97, 122)
-    const tmp:string = String.fromCharCode(char_rand)
-
-    return taille > 0 ? str_rand(taille - 1, f, char + tmp) : char
-}
-
 const aleaMine = n => rand(0, n) === 0 ? 1 : 0
 
 const vCase:any[] = [
@@ -41,25 +33,3 @@ const vCase:any[] = [
     {x : 0, y : -1},
     {x : 1, y : -1}
 ]
-
-// module.exports = {
-//     data : {
-//         canvas : canvas,
-//         ctx : ctx,
-//         lx : lx,
-//         t_case : t_case,
-//         mapx : mapx,
-//         mapy : mapy,
-//         vCase : vCase
-//     },
-//     superfor : superfor,
-//     rand : rand,
-//     aleaMine : aleaMine
-// }
-
-// console.log(str_rand(5, rand))
-
-// superfor(5, (i, r) => {
-// 	console.log('i :', i, 'r :', r)
-// 	return i + r
-// })

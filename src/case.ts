@@ -1,6 +1,3 @@
-//const conf:any = require('./config')
-
-// export class Case {
 class Case {
     private nbMine:number = 0
     private police:number = 12

@@ -1,11 +1,3 @@
-// import { Case } from './case'
-
-// const conf:any = require('./config')
-// const superfor:any = conf.superfor
-// const aleaMine:any = conf.aleaMine
-// const vCase:any[] = conf.data.vCase
-
-// export class MapDem {
 class MapDem {
     private cases:Case[] = []
     private x:number
