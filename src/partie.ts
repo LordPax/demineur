@@ -1,27 +1,29 @@
-import { MapDem } from './map'
+// import { MapDem } from './map'
 
-const conf:object = require('./config')
+// const conf:any = require('./config')
 
-export class Partie {
+// export class Partie {
+class Partie {
     private pts:number = 0
-    private map:object = null
+    private map:MapDem = null
 
     constructor() {}
 
     public get getPts():number { return this.pts }
+    public get getMap():MapDem { return this.map }
 
-    public setMap(map):void { this.map = map }
+    public setMap(map:MapDem):void { this.map = map }
 
     public event(canvas:any):void {
         canvas.addEventListener('click', e => {
-            this.map.cases.map(elem => this.eventCase(canvas, e, elem))
+            this.map.gCases.map(elem => this.eventCase(canvas, e, elem))
         })
     }
 
     // public eventKey(canvas) {}
 
     public eventCase(canvas:any, e:any, elem:Case):void {
-        const x:number = e.clientX, y = e.clientY
+        const x:number = e.clientX, y:number = e.clientY
        
         if (x > elem.getX && x < elem.getX + elem.getT &&
             y > elem.getY && y < elem.getY + elem.getT) {

@@ -1,6 +1,7 @@
-const conf:object = require('./config')
+//const conf:any = require('./config')
 
-export class Case {
+// export class Case {
+class Case {
     private nbMine:number = 0
     private police:number = 12
     private toggle:number = 0
@@ -12,6 +13,7 @@ export class Case {
     private mapy:number
     private t:number
     private mine:number
+
     constructor(ctx:any, mapx:number, mapy:number, nbx:number, nby:number, t:number, mine:number) {
         this.ctx = ctx
         this.nbx = nbx
@@ -52,10 +54,10 @@ export class Case {
         this.ctx.fillRect(this.getX, this.getY, this.t, this.t)
     }
 
-    public drawText(txt:string):void {
-        const t2 = `${txt}`
-        const x = this.getX + this.t / 2 - t2.length * this.police / 3
-        const y = this.getY + this.t / 2 + this.police / 3
+    public drawText(txt:any):void {
+        const t2:string = `${txt}`
+        const x:number = this.getX + this.t / 2 - t2.length * this.police / 3
+        const y:number = this.getY + this.t / 2 + this.police / 3
         this.ctx.font = `${this.police}px sans-serif`;
         this.ctx.fillStyle = '#000000';
         this.ctx.fillText(txt, x, y);
