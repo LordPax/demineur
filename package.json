@@ -5,15 +5,20 @@
     "main": "app.js",
     "scripts": {
         "test": "echo \"je suis un test\"",
-        "start": "nodemon app.js",
-        "compile" : "./compileTs.sh"
+        "dev": "nodemon app.js",
+        "start": "node app.js",
+        "compile": "./compileTs.sh"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@types/node": "^12.12.6",
         "ejs": "^2.7.1",
-        "express": "^4.17.1",
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "@types/node": "^12.12.6",
+        "concurrently": "^5.0.0",
+        "typescript": "^3.7.2",
         "nodemon": "^1.19.4"
     }
 }
