@@ -2,11 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "esModuleInterop": true,
-    "outDir": ".",
     "target": "es2019",
-    "strict": true
-  },
-  "include": [
-    "source/**/*"
-  ]
+    "strict": false
+  }
 }
