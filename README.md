@@ -6,6 +6,7 @@
 ```bash
 git clone https://github.com/LordPax/demineur.git; cd demineur
 npm install
+./compileTs.sh # compilation des fichier typescript dans src
 npm start
 ```
 
