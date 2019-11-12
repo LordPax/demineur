@@ -15,8 +15,6 @@ class Partie {
         })
     }
 
-    // public eventKey(canvas) {}
-
     public eventCase(canvas:any, e:any, elem:Case):void {
         const x:number = e.clientX, y:number = e.clientY
        
