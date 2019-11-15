@@ -18,10 +18,12 @@ class MapDem {
 
     public get getX():number { return this.x }
     public get getY():number { return this.y }
+    public get getLx():number { return this.lx }
+    public get getLy():number { return this.ly }
     public get gCases():Case[] { return this.cases }
     public getCase(x:number, y:number):Case { return this.cases[y * this.lx + x] }
 
-    public initMine():number { return aleaMine(5) } // methode temporaire
+    public initMine():number { return aleaMine(3) } // methode temporaire
 
     public initMap():void {
         this.cases = superfor(this.lx, (i, r) => {
@@ -34,19 +36,31 @@ class MapDem {
     public drawMap():void { this.cases.map(x => x.drawCase()) }
 
     public evaluerCase(elem:Case):void {
-        if (elem.getMine !== 1)
+        if (elem.getMine === 0){
             elem.setNbMine(this.chercheMine(elem))
+            if ( elem.getNbMine === 0 ) this.etandCase(elem)
+        }
         else
             alert('mine')
     }
 
     public chercheMine(elem:Case, nbm:number = 0, acc:number = 0):number {
-        const x:number = elem.getNbX + vCase[acc].x, y:number = elem.getNbY + vCase[acc].y
-        const cond:boolean = x >= 0 && x < this.lx && y >= 0 && y < this.ly
-
-        const altX:number = cond ? x : elem.getNbX, altY:number = cond ? y : elem.getNbY
-        const nbMine:number = this.getCase(altX, altY).getMine === 1 ? nbm + 1 : nbm
+        const {x, y}:Coord = chercheCoord(elem, this, acc)
+        const nbMine:number = this.getCase(x, y).getMine === 1 ? nbm + 1 : nbm
 
         return acc < 7 ? this.chercheMine(elem, nbMine, acc + 1) : nbMine
+    }
+
+    public etandCase(elem:Case, acc:number = 0):number {
+        const {x, y}:Coord = chercheCoord(elem, this, acc)
+        const elemSuiv:Case = this.getCase(x, y)
+        elemSuiv.setNbMine(this.chercheMine(elemSuiv))
+        elemSuiv.toggleCase()
+
+        return acc < 7 ? this.etandCase(elem, acc + 1) : 0
+    }
+
+    public propagueCase(elem:Case):void {
+
     }
 }

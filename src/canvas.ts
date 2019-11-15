@@ -1,5 +1,5 @@
 const part:Partie = new Partie()
-part.setMap(new MapDem(ctx, mapx, mapy, ly, ly, t_case))
+part.setMap(ctx, mapx, mapy, ly, ly, t_case)
 const map:MapDem = part.getMap
 
 map.initMap()

@@ -7,7 +7,9 @@ class Partie {
     public get getPts():number { return this.pts }
     public get getMap():MapDem { return this.map }
 
-    public setMap(map:MapDem):void { this.map = map }
+    public setMap(ctx:any, mapx:number, mapy:number, lx:number, ly:number, t_case:number):void { 
+        this.map = new MapDem(ctx, mapx, mapy, ly, ly, t_case)
+    }
 
     public event(canvas:any):void {
         canvas.addEventListener('click', e => {

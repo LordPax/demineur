@@ -33,9 +33,11 @@ class Case {
 
     public drawCase():void {
         this.drawRect('#000000', '#EFEFEF')
+        const mine:string|number = this.getNbMine === 0 ? ' ' : this.getNbMine
+
         if (this.toggle === 1) {
             this.drawRect('#000000', '#FFFFFF')
-            this.drawText(this.getMine === 1 ? "M" : this.getNbMine)
+            this.drawText(this.getMine === 1 ? "M" : mine, this.getColorNbMine())
         }
         else if (this.flag === 1)
             this.drawText('F')
@@ -51,12 +53,47 @@ class Case {
         this.ctx.fillRect(this.getX, this.getY, this.t, this.t)
     }
 
-    public drawText(txt:any):void {
+    public drawText(txt:any, color:string = '#000000'):void {
         const t2:string = `${txt}`
         const x:number = this.getX + this.t / 2 - t2.length * this.police / 3
         const y:number = this.getY + this.t / 2 + this.police / 3
         this.ctx.font = `${this.police}px sans-serif`;
-        this.ctx.fillStyle = '#000000';
+        this.ctx.fillStyle = color;
         this.ctx.fillText(txt, x, y);
+    }
+
+    public getColorNbMine():string {
+        let color:string
+
+        switch (this.getNbMine) {
+            case 1 :
+                color = '#0000FF' // 08298A
+                break
+            case 2 :
+                color = '#298A08' // 298A08
+                break
+            case 3 :
+                color = '#FF0000' // B40404
+                break
+            case 4 :
+                color = '#00FFFF'
+                break
+            case 5 :
+                color = '#FF00FF'
+                break
+            case 6 :
+                color = '#FFFF00'
+                break
+            case 7 :
+                color = '#FF8000'
+                break
+            case 8 :
+                color = '#08298A'
+                break
+            case 9 :
+                color = '#FF0000'
+                break
+        }
+        return color
     }
 }
