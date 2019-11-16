@@ -3,6 +3,7 @@ class Case {
     private police:number = 12
     private toggle:number = 0
     private flag:number = 0
+    private img:HTMLImageElement = new Image()
     private ctx:any
     private nbx:number
     private nby:number
@@ -29,9 +30,9 @@ class Case {
     public get getMine():number { return this.mine }
     public get getNbMine():number { return this.nbMine}
     public get getFlag():number { return this.flag }
-    public setNbMine(nb:number):void { this.nbMine = nb}
+    public setNbMine = (nb:number):void => { this.nbMine = nb }
 
-    public drawCase():void {
+    public drawCase = ():void => {
         this.drawRect('#000000', '#EFEFEF')
         const mine:string|number = this.getNbMine === 0 ? ' ' : this.getNbMine
 
@@ -40,20 +41,20 @@ class Case {
             this.drawText(this.getMine === 1 ? "M" : mine, this.getColorNbMine())
         }
         else if (this.flag === 1)
-            this.drawText('F')
+            this.drawImages('/assets/images/flag.png')
     }
 
-    public toggleCase():void { if (this.toggle === 0) this.toggle = 1 }
-    public toggleFlag():void { if (this.flag === 0) { this.flag = 1 } else { this.flag = 0 } }
+    public toggleCase = ():void => { if (this.toggle === 0) this.toggle = 1 }
+    public toggleFlag = ():void => { if (this.flag === 0) { this.flag = 1 } else { this.flag = 0 } }
 
-    public drawRect(border:string, bg:string):void {
+    public drawRect = (border:string, bg:string):void => {
         this.ctx.strokeStyle = border
         this.ctx.fillStyle = bg
         this.ctx.strokeRect(this.getX, this.getY, this.t, this.t)
         this.ctx.fillRect(this.getX, this.getY, this.t, this.t)
     }
 
-    public drawText(txt:any, color:string = '#000000'):void {
+    public drawText = (txt:any, color:string = '#000000'):void => {
         const t2:string = `${txt}`
         const x:number = this.getX + this.t / 2 - t2.length * this.police / 3
         const y:number = this.getY + this.t / 2 + this.police / 3
@@ -62,38 +63,22 @@ class Case {
         this.ctx.fillText(txt, x, y);
     }
 
-    public getColorNbMine():string {
-        let color:string
+    public drawImages = (img:string):void => {
+        this.img.src = img
+        this.ctx.drawImage(this.img, this.getX + 5, this.getY + 5, this.getT - 10, this.getT - 10)
+    }
 
-        switch (this.getNbMine) {
-            case 1 :
-                color = '#0000FF' // 08298A
-                break
-            case 2 :
-                color = '#298A08' // 298A08
-                break
-            case 3 :
-                color = '#FF0000' // B40404
-                break
-            case 4 :
-                color = '#00FFFF'
-                break
-            case 5 :
-                color = '#FF00FF'
-                break
-            case 6 :
-                color = '#FFFF00'
-                break
-            case 7 :
-                color = '#FF8000'
-                break
-            case 8 :
-                color = '#08298A'
-                break
-            case 9 :
-                color = '#FF0000'
-                break
-        }
-        return color
+    public getColorNbMine = ():string => {
+        return match(this.getNbMine)
+        .case(1, () => '#0000FF')
+        .case(2, () => '#298A08')
+        .case(3, () => '#FF0000')
+        .case(4, () => '#00FFFF')
+        .case(5, () => '#FF00FF')
+        .case(6, () => '#FFFF00')
+        .case(7, () => '#FF8000')
+        .case(8, () => '#08298A')
+        .case(9, () => '#FF0000')
+        .default(() => {})
     }
 }

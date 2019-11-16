@@ -7,17 +7,17 @@ class Partie {
     public get getPts():number { return this.pts }
     public get getMap():MapDem { return this.map }
 
-    public setMap(ctx:any, mapx:number, mapy:number, lx:number, ly:number, t_case:number):void { 
+    public setMap = (ctx:any, mapx:number, mapy:number, lx:number, ly:number, t_case:number):void => { 
         this.map = new MapDem(ctx, mapx, mapy, ly, ly, t_case)
     }
 
-    public event(canvas:any):void {
+    public event = (canvas:any):void => {
         canvas.addEventListener('click', e => {
             this.map.gCases.map(elem => this.eventCase(canvas, e, elem))
         })
     }
 
-    public eventCase(canvas:any, e:any, elem:Case):void {
+    public eventCase = (canvas:any, e:any, elem:Case):void => {
         const x:number = e.clientX, y:number = e.clientY
        
         if (x > elem.getX && x < elem.getX + elem.getT &&
@@ -31,7 +31,7 @@ class Partie {
         }   
     }
 
-    public gagner():void {} // a faire !!!
+    public gagner = ():void => {} // a faire !!!
 
-    public perdue():void {} // a faire !!!
+    public perdue = ():void => {} // a faire !!!
 }

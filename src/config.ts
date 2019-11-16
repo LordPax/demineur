@@ -28,13 +28,21 @@ const superfor = (compt:number, f:(i:number, r:any) => any, acc:number = 0, r:an
 const rand = (min:number, max:number):number => Math.floor(Math.random() * (max - min + 1) + min)
 const aleaMine = (n:number):number => rand(0, n) === 0 ? 1 : 0
 
-const chercheCoord = (elem:Case, self:MapDem, i:number):Coord => {
-    const x:number = elem.getNbX + vCase[i].x, y:number = elem.getNbY + vCase[i].y
-    const cond:boolean = x >= 0 && x < self.getLx && y >= 0 && y < self.getLy
-    const altX:number = cond ? x : elem.getNbX, altY:number = cond ? y : elem.getNbY
-
-    return {x : altX, y : altY}
+const match = (test:any, acc:any = null):any => {
+    return {
+        case : (val:any, act:()=>any):any => match(test, val === test ? act() : acc),
+        default : (act:()=>any):any => acc === null ? act() : acc
+    }
 }
+
+// const test = match(4)
+// .case(1, () => 'test1')
+// .case(2, () => 'test2')
+// .case(3, () => 'test3')
+// .case(4, () => 'test4')
+// .default(() => {})
+
+// alert(test)
 
 const vCase:Coord[] = [
     {x : 1, y : 0},
