@@ -79,6 +79,6 @@ class Case {
         .case(7, () => '#FF8000')
         .case(8, () => '#08298A')
         .case(9, () => '#FF0000')
-        .default(() => {})
+        .default(() => '')
     }
 }
