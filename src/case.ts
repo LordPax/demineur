@@ -37,8 +37,11 @@ class Case {
         const mine:string|number = this.getNbMine === 0 ? ' ' : this.getNbMine
 
         if (this.toggle === 1) {
-            this.drawRect('#000000', '#FFFFFF')
-            this.drawText(this.getMine === 1 ? "M" : mine, this.getColorNbMine())
+            this.drawRect('#000000', this.getMine !== 1 ? '#FFFFFF' : '#FF0000')
+            if (this.getMine !== 1)
+                this.drawText(mine, this.getColorNbMine())
+            else
+                this.drawImages('/assets/images/mine.png')
         }
         else if (this.flag === 1)
             this.drawImages('/assets/images/flag.png')
@@ -68,8 +71,7 @@ class Case {
         this.ctx.drawImage(this.img, this.getX + 5, this.getY + 5, this.getT - 10, this.getT - 10)
     }
 
-    public getColorNbMine = ():string => {
-        return match(this.getNbMine)
+    public getColorNbMine = ():string => match(this.getNbMine)
         .case(1, () => '#0000FF')
         .case(2, () => '#298A08')
         .case(3, () => '#FF0000')
@@ -79,6 +81,6 @@ class Case {
         .case(7, () => '#FF8000')
         .case(8, () => '#08298A')
         .case(9, () => '#FF0000')
-        .default(() => '')
-    }
+        .default(() => '#000000')
+    
 }
