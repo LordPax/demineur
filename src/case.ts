@@ -71,7 +71,8 @@ class Case {
         this.ctx.drawImage(this.img, this.getX + 5, this.getY + 5, this.getT - 10, this.getT - 10)
     }
 
-    public getColorNbMine = ():string => match(this.getNbMine)
+    public getColorNbMine = ():string => 
+        match(this.getNbMine)
         .case(1, () => '#0000FF')
         .case(2, () => '#298A08')
         .case(3, () => '#FF0000')
