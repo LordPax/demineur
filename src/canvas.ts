@@ -10,7 +10,7 @@ const draw = ():void => {
     map.drawMap()
 }
 const update = ():void => {
-
+	part.analyse()
 }
 const main = ():void => {
     draw()

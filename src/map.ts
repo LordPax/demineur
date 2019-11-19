@@ -33,15 +33,13 @@ class MapDem {
         }, 0, [])
     }
 
-    public drawMap = ():void => { this.cases.map(x => x.drawCase()) }
+    public drawMap = ():void => { this.cases.forEach(x => x.drawCase()) }
 
     public evaluerCase = (elem:Case):void => {
         if (elem.getMine === 0){
             elem.setNbMine(this.chercheMine(elem))
             if ( elem.getNbMine === 0 ) this.etandCase(elem)
         }
-        else
-            alert('mine')
     }
 
     public chercheMine = (elem:Case, nbm:number = 0, acc:number = 0):number => {

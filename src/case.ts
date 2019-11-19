@@ -28,7 +28,8 @@ class Case {
     public get getY():number { return this.mapy + this.t * this.nby }
     public get getT():number { return this.t }
     public get getMine():number { return this.mine }
-    public get getNbMine():number { return this.nbMine}
+    public get getToggle():number { return this.toggle }
+    public get getNbMine():number { return this.nbMine }
     public get getFlag():number { return this.flag }
     public setNbMine = (nb:number):void => { this.nbMine = nb }
 
