@@ -17,5 +17,8 @@ npm start
 ### partie après
 ![apres](https://raw.githubusercontent.com/LordPax/demineur/master/exemple/partie_apres.png)
 
+### partie perdu
+![apres](https://raw.githubusercontent.com/LordPax/demineur/master/exemple/partie_perdu.png)
+
 ## Tester après installaion
 * localhost:8080
