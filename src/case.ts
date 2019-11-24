@@ -32,6 +32,7 @@ class Case {
     public get getNbMine():number { return this.nbMine }
     public get getFlag():number { return this.flag }
     public setNbMine = (nb:number):void => { this.nbMine = nb }
+    public setMine = (mine:number) => this.mine = mine
 
     public drawCase = ():void => {
         this.drawRect('#000000', '#EFEFEF')

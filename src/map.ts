@@ -23,14 +23,19 @@ class MapDem {
     public get gCases():Case[] { return this.cases }
     public getCase = (x:number, y:number):Case => this.cases[y * this.lx + x]
 
-    public initMine = ():number => aleaMine(3)  // methode temporaire
+    //public initMine = ():number => aleaMine(3)  // methode temporaire
+
+    public initMine = ():void => {
+        this.cases.forEach(elem => elem.setMine(aleaMine(3)))
+    }
 
     public initMap = ():void => {
         this.cases = superfor(this.lx, (i, r) => {
             return superfor(this.ly, (j, r2) => {
-                return [...r2, new Case(this.ctx, this.x, this.y, j, i, this.t_case, this.initMine())]
+                return [...r2, new Case(this.ctx, this.x, this.y, j, i, this.t_case, 0)]
             }, 0, r)
         }, 0, [])
+        this.initMine()
     }
 
     public drawMap = ():void => { this.cases.forEach(x => x.drawCase()) }

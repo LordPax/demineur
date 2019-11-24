@@ -20,7 +20,6 @@ class Partie {
 
     public eventCase = (canvas:any, e:any, elem:Case):void => {
         const x:number = e.clientX, y:number = e.clientY
-       
         if (x > elem.getX && x < elem.getX + elem.getT &&
             y > elem.getY && y < elem.getY + elem.getT) {
             if (e.ctrlKey === false && elem.getFlag === 0) {
