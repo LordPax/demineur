@@ -1,8 +1,19 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es2019",
-    "strict": false
-  }
+    "compilerOptions": {
+        "module": "system",
+        "esModuleInterop": true,
+        "target": "es2019",
+        "strict": false,
+        "outFile" : "build/canvas.js"
+    },
+    "files" : [
+        "src/config.ts",
+        "src/case.ts",
+        "src/map.ts",
+        "src/partie.ts",
+        "src/canvas.ts"
+    ],
+    "exclude" : [
+        "node_modules"
+    ]
 }

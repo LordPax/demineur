@@ -1,16 +1,15 @@
 # Démineur
 ## Description
-* Démineur avec node pour la partie back-end et une balise canvas pout la partie front-end
+* Démineur programmé avec TypeScript 
 
 ## Installation
 ```bash
 git clone https://github.com/LordPax/demineur.git; cd demineur
 npm install
 ./compileTs.sh # compilation des fichier typescript dans src
-npm start
 ```
 
-## exemple de partie (ça vas évoluer)
+## exemple de partie
 ### partie avant
 ![avant](https://raw.githubusercontent.com/LordPax/demineur/master/exemple/partie_avant.png)
 
@@ -18,7 +17,4 @@ npm start
 ![apres](https://raw.githubusercontent.com/LordPax/demineur/master/exemple/partie_apres.png)
 
 ### partie perdu
-![apres](https://raw.githubusercontent.com/LordPax/demineur/master/exemple/partie_perdu.png)
-
-## Tester après installaion
-* localhost:8080
+![perdu](https://raw.githubusercontent.com/LordPax/demineur/master/exemple/partie_perdu.png)

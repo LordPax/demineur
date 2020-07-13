@@ -43,10 +43,10 @@ class Case {
             if (this.getMine !== 1)
                 this.drawText(mine, this.getColorNbMine())
             else
-                this.drawImages('/assets/images/mine.png')
+                this.drawImages('images/mine.png')
         }
         else if (this.flag === 1)
-            this.drawImages('/assets/images/flag.png')
+            this.drawImages('images/flag.png')
     }
 
     public toggleCase = ():void => { if (this.toggle === 0) this.toggle = 1 }

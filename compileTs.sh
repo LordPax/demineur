@@ -1,12 +1,13 @@
 #!/bin/sh
 
-if [ ! -d public/script ]; then
+if [ ! -d build ]; then
 	echo "création du répertoire script"
-	mkdir public/script
+	mkdir build
 fi
 
-npx tsc src/config.ts src/case.ts src/map.ts src/partie.ts src/canvas.ts -t ES2019 --outFile public/canvas.js
-curl -X POST -s --data-urlencode 'input@public/canvas.js' https://javascript-minifier.com/raw > public/script/canvas.min.js
-rm public/canvas.js
+# npx tsc src/config.ts src/case.ts src/map.ts src/partie.ts src/canvas.ts -t ES2019 --outFile build/canvas.js
+npx tsc
+curl -X POST -s --data-urlencode 'input@build/canvas.js' https://javascript-minifier.com/raw > build/canvas.min.js
+rm build/canvas.js
 
 echo "compilation terminer"

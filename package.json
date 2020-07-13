@@ -1,23 +1,16 @@
 {
     "name": "demineur",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "projet de démineur",
-    "main": "app.ts",
     "scripts": {
-        "test": "echo \"je suis un test\"",
-        "start": "ts-node app.ts"
+        "test": "echo \"je suis un test\""
     },
     "author": "teddy gauthier",
     "license": "ISC",
-    "dependencies": {
-        "ejs": "^2.7.1",
-        "express": "^4.17.1"
-    },
     "devDependencies": {
         "@trongnd/ts-nodemon": "^1.0.3",
         "@types/node": "^12.12.6",
         "concurrently": "^5.0.0",
-        "nodemon": "^1.19.4",
         "ts-node": "^8.4.1",
         "typescript": "^3.7.2",
         "typings": "^2.1.1"
